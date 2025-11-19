@@ -1,0 +1,50 @@
+Index: snake.py
+===================================================================
+diff --git a/snake.py b/snake.py
+deleted file mode 100644
+--- a/snake.py	
++++ /dev/null	
+@@ -1,43 +0,0 @@
+-from turtle import Turtle,Screen
+-
+-STARTING_POSITIONS=[(0,0),(-20,0),(-40,0)]
+-MOVE_DISTANCE=20
+-
+-class Snake:
+-
+-    def __init__(self):
+-        self.all_segment = []
+-        self.create_snake()
+-        self.head=self.all_segment[0]
+-
+-    def create_snake(self):
+-        for position in STARTING_POSITIONS:
+-            new_segment = Turtle("square")
+-            new_segment.color("white")
+-            new_segment.penup()
+-            new_segment.goto(position)
+-            self.all_segment.append(new_segment)
+-
+-    def move_snake(self):
+-        for seg_num in range(len(self.all_segment) - 1, 0, -1):
+-            new_x = self.all_segment[seg_num - 1].xcor()
+-            new_y = self.all_segment[seg_num - 1].ycor()
+-            self.all_segment[seg_num].goto(new_x, new_y)
+-        self.all_segment[0].forward(MOVE_DISTANCE)
+-
+-    def up(self):
+-        if self.head!=270:
+-            self.head.setheading(90)
+-
+-    def right(self):
+-        if self.head != 180:
+-            self.head.setheading(0)
+-
+-    def left(self):
+-        if self.head != 0:
+-            self.head.setheading(180)
+-
+-    def down(self):
+-        if self.head != 9:
+-            self.head.setheading(270)
+-
